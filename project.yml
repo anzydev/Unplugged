@@ -1,0 +1,63 @@
+name: Unplugged
+options:
+  bundleIdPrefix: com.anzydev
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "15.0"
+  defaultConfig: Debug
+  generateEmptyDirectories: true
+  transitivelyLinkDependencies: true
+
+settings:
+  base:
+    PRODUCT_NAME: Unplugged
+    BUNDLE_IDENTIFIER: com.anzydev.unplugged
+    SWIFT_VERSION: "5.9"
+    MACOSX_DEPLOYMENT_TARGET: "13.0"
+    ARCHS: "arm64 x86_64"
+    VALID_ARCHS: "arm64 x86_64"
+    ENABLE_HARDENED_RUNTIME: YES
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: ""  # Set your Apple Developer Team ID here
+    INFOPLIST_FILE: Unplugged/Info.plist
+    CODE_SIGN_ENTITLEMENTS: Unplugged/Unplugged.entitlements
+    ENABLE_APP_SANDBOX: NO
+    OTHER_LDFLAGS: "-framework IOKit -framework ServiceManagement -framework UserNotifications"
+    SWIFT_STRICT_CONCURRENCY: complete
+    SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+    DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+    GCC_OPTIMIZATION_LEVEL: "0"
+  configs:
+    Release:
+      SWIFT_OPTIMIZATION_LEVEL: "-O"
+      GCC_OPTIMIZATION_LEVEL: s
+      DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+
+targets:
+  Unplugged:
+    type: application
+    platform: macOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: Unplugged
+        excludes:
+          - "*.plist"
+          - "*.entitlements"
+    resources:
+      - path: Unplugged/Info.plist
+        optional: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.anzydev.unplugged
+        INFOPLIST_FILE: Unplugged/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Unplugged/Unplugged.entitlements
+
+schemes:
+  Unplugged:
+    build:
+      targets:
+        Unplugged: all
+    run:
+      config: Debug
+    archive:
+      config: Release
