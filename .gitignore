@@ -1,0 +1,45 @@
+# Xcode
+build/
+*.o
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Xcode Derived Data
+DerivedData/
+*.xcuserdata/
+*.xcscmblueprint
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Generated files — regenerate with: /usr/bin/ruby generate_xcodeproj.rb
+# (uncomment to gitignore the generated project — some teams prefer to commit it)
+# Unplugged.xcodeproj/
+
+# CocoaPods
+Pods/
+
+# Backup files
+*~
+*.orig
+
+# Disk Images
+*.dmg
+
+# Built Application & Generated Project
+*.app/
+Unplugged.xcodeproj/
+
+# Local binaries
+gh
+
+
+
