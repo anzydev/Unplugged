@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build & Verify
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Generate Xcode Project
+        run: ruby generate_xcodeproj.rb
+
+      - name: Build Application
+        run: |
+          xcodebuild -project Unplugged.xcodeproj \
+                     -scheme Unplugged \
+                     -configuration Debug \
+                     -derivedDataPath Build \
+                     CODE_SIGNING_ALLOWED=NO \
+                     CODE_SIGNING_REQUIRED=NO \
+                     clean build
