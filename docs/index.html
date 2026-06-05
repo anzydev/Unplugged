@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unplugged — Automatic macOS Power Shutdown Utility</title>
+  <meta name="description" content="A lightweight, native macOS menu bar utility that automatically and gracefully shuts down your Mac when external power is disconnected.">
+  
+  <!-- SEO Tags -->
+  <meta property="og:title" content="Unplugged — Automatic macOS Power Shutdown Utility">
+  <meta property="og:description" content="Graceful automatic macOS shutdown on charger disconnection. Universal Binary, Zero CPU Polling.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/anzydev/Unplugged">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Patterns Overlay -->
+  <div class="global-pattern dots" aria-hidden="true"></div>
+  <div class="global-pattern stripes" aria-hidden="true"></div>
+  <div class="global-pattern mesh" aria-hidden="true"></div>
+
+  <!-- FLOATING DECORATIONS -->
+  <div class="floating-shape star-1 animate-float" aria-hidden="true">★</div>
+  <div class="floating-shape sparkle-1 animate-wiggle" aria-hidden="true">✨</div>
+  <div class="floating-shape star-2 animate-float-reverse" aria-hidden="true">✸</div>
+  <div class="floating-shape emoji-1 animate-bounce-subtle" aria-hidden="true">🚀</div>
+  <div class="floating-shape emoji-2 animate-wiggle" aria-hidden="true">⚡</div>
+  <div class="floating-shape sparkle-2 animate-float" aria-hidden="true">💫</div>
+
+  <!-- HEADER / NAVIGATION -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo-link">
+        <img src="logo.jpeg" alt="Unplugged Logo" class="logo-img">
+        <span class="logo-text">UNPLUGGED</span>
+      </a>
+      <nav class="main-nav">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#how-it-works" class="nav-link">How it Works</a>
+        <a href="https://github.com/anzydev/Unplugged" class="nav-link" target="_blank">GitHub</a>
+      </nav>
+      <div class="header-cta">
+        <a href="https://github.com/anzydev/Unplugged/releases/download/v1.0.0/Unplugged.dmg" class="btn btn-nav" download>DOWNLOAD</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <img src="logo.jpeg" alt="Unplugged App Icon" class="hero-logo">
+      <div class="hero-tagline uppercase">macOS Utility</div>
+      <h1 class="hero-title mega-text">
+        SHUT DOWN WHEN <span class="gradient-text animate-gradient-shift">UNPLUGGED</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        A lightweight native menu bar app that automatically and gracefully shuts down your Mac when charger power is disconnected. No background CPU polling, just pure OS-level event listening.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="https://github.com/anzydev/Unplugged/releases/download/v1.0.0/Unplugged.dmg" class="btn btn-primary btn-large" download>
+          DOWNLOAD NOW (DMG)
+        </a>
+        <a href="https://github.com/anzydev/Unplugged" class="btn btn-outline btn-large" target="_blank">
+          VIEW SOURCE ON GITHUB
+        </a>
+      </div>
+
+      <div class="hero-metadata">
+        <span>⚡ Version 1.0.0</span>
+        <span>🖥️ macOS 13.0+ (Ventura, Sonoma, Sequoia)</span>
+        <span>🍏 Apple Silicon & Intel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOCKUP SECTION -->
+  <section class="mockup-section">
+    <div class="section-title-wrap">
+      <h2 class="section-title">THE INTERFACE</h2>
+      <p class="section-subtitle">Compact, native, and perfectly integrated into macOS.</p>
+    </div>
+    
+    <div class="mockup-container">
+      <!-- Menu Bar Simulation -->
+      <div class="menu-bar-sim border-clash-1">
+        <div class="menu-bar-left">
+          <span></span>
+          <span>Finder</span>
+          <span>File</span>
+          <span>Edit</span>
+          <span>View</span>
+        </div>
+        <div class="menu-bar-right">
+          <span>📶</span>
+          <span>🔋 100%</span>
+          <span class="active-icon animate-pulse-glow">🔌 30s</span>
+          <span>Fri 6:07 PM</span>
+        </div>
+
+        <!-- Popover Simulation -->
+        <div class="popover-sim border-clash-2 shadow-triple">
+          <!-- Popover Header -->
+          <div class="popover-header">
+            <div class="popover-icon-box"><img src="logo.jpeg" alt="" class="popover-logo"></div>
+            <div class="popover-status-group">
+              <div class="popover-status">On battery power</div>
+              <div class="popover-desc">Battery Power · 84%</div>
+            </div>
+          </div>
+          
+          <!-- Countdown Section -->
+          <div class="popover-countdown bg-orange-tint">
+            <div class="countdown-row">
+              <span class="warning-icon">⚠️</span>
+              <span class="countdown-title">Shutdown Countdown</span>
+              <span class="countdown-timer text-orange animate-wiggle">0:24</span>
+            </div>
+            <!-- Progress Bar -->
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 20%;"></div>
+            </div>
+            <!-- Cancel Button -->
+            <button class="btn btn-cancel-shutdown btn-small" onclick="alert('Shutdown countdown cancelled! App returns to monitoring.')">
+              Cancel Shutdown
+            </button>
+          </div>
+
+          <!-- Actions -->
+          <div class="popover-menu">
+            <div class="menu-item">
+              <span class="menu-icon">⏸️</span>
+              <span class="menu-text">Disable Monitoring</span>
+            </div>
+            <div class="menu-divider"></div>
+            <div class="menu-item">
+              <span class="menu-icon">⚙️</span>
+              <span class="menu-text">Settings…</span>
+            </div>
+            <div class="menu-item">
+              <span class="menu-icon">ℹ️</span>
+              <span class="menu-text">About Unplugged</span>
+            </div>
+            <div class="menu-item">
+              <span class="menu-icon">❌</span>
+              <span class="menu-text">Quit Unplugged</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="features-section">
+    <div class="section-title-wrap">
+      <h2 class="section-title">CORE POWERS</h2>
+      <p class="section-subtitle">Engineered for absolute reliability and zero background resource footprint.</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Card 1 -->
+      <div class="feature-card accent-rotate-0 border-clash-3 shadow-double">
+        <div class="card-pattern grid-pattern"></div>
+        <div class="card-icon">⚡</div>
+        <h3 class="card-title">Event-Driven</h3>
+        <p class="card-body-text">
+          Uses macOS IOKit hardware notification triggers. Runs on absolute zero CPU cycles while idling, firing only when the charger is connected or disconnected.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-card accent-rotate-1 border-clash-4 shadow-double">
+        <div class="card-pattern stripes-pattern"></div>
+        <div class="card-icon">⏳</div>
+        <h3 class="card-title">Smart Countdown</h3>
+        <p class="card-body-text">
+          Configurable safety timers (10s, 30s, 1m, 5m). Instantly aborts the shutdown sequence and restores normal operation if the power cable is plugged back in.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-card accent-rotate-2 border-clash-5 shadow-double">
+        <div class="card-pattern checker-pattern"></div>
+        <div class="card-icon">🔔</div>
+        <h3 class="card-title">Rich Notifications</h3>
+        <p class="card-body-text">
+          Communicates with the macOS User Notification Center to display power events, updates on remaining time, and alerts before shutdown is triggered.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-card accent-rotate-3 border-clash-1 shadow-double">
+        <div class="card-pattern grid-pattern"></div>
+        <div class="card-icon">⚙️</div>
+        <h3 class="card-title">Launch at Login</h3>
+        <p class="card-body-text">
+          Utilizes the modern macOS 13+ ServiceManagement API (`SMAppService`) to configure automatic startup, seamlessly matching standard macOS system settings.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="feature-card accent-rotate-4 border-clash-2 shadow-double">
+        <div class="card-pattern stripes-pattern"></div>
+        <div class="card-icon">🔒</div>
+        <h3 class="card-title">Secure & Transparent</h3>
+        <p class="card-body-text">
+          Requires no sandbox but contains zero network connectivity, tracking SDKs, or data uploads. Pure AppleScript and system calls for absolute confidentiality.
+        </p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="feature-card accent-rotate-0 border-clash-3 shadow-double">
+        <div class="card-pattern checker-pattern"></div>
+        <div class="card-icon">📦</div>
+        <h3 class="card-title">Universal Binary</h3>
+        <p class="card-body-text">
+          Optimized native build for Apple Silicon (M1/M2/M3/M4) and Intel architectures, compiled using modern Swift 5.9 with strict concurrency checks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section id="how-it-works" class="how-section">
+    <div class="section-title-wrap">
+      <h2 class="section-title">HOW IT WORKS</h2>
+      <p class="section-subtitle">Three steps to continuous Mac power automation protection.</p>
+    </div>
+
+    <div class="steps-grid">
+      <!-- Step 1 -->
+      <div class="step-card accent-rotate-1 shadow-double">
+        <div class="step-number text-shadow-double">01</div>
+        <h3 class="step-title">Run the Script</h3>
+        <p class="step-text">
+          Double-click the downloaded DMG, drag the application into your Applications folder, and launch the utility.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card accent-rotate-2 shadow-double">
+        <div class="step-number text-shadow-double">02</div>
+        <h3 class="step-title">Set Your Timer</h3>
+        <p class="step-text">
+          Click the menu bar icon, open Settings, and pick a custom countdown duration (e.g. 30 seconds). Enable Launch at Login.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card accent-rotate-3 shadow-double">
+        <div class="step-number text-shadow-double">03</div>
+        <h3 class="step-title">Automate</h3>
+        <p class="step-text">
+          Unplug the charger. Watch the countdown trigger in your menu bar. Reconnecting immediately cancels the countdown.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG CTA / DOWNLOAD SECTION -->
+  <section class="download-section">
+    <div class="download-container border-clash-2 shadow-triple">
+      <div class="download-pattern dots"></div>
+      <div class="download-content">
+        <h2 class="download-title text-shadow-triple">READY TO GO UNPLUGGED?</h2>
+        <p class="download-desc">
+          Get the native app bundle now and secure your system against accidental power interruptions. Free, open-source, and fully transparent.
+        </p>
+        
+        <div class="download-btn-wrap">
+          <a href="https://github.com/anzydev/Unplugged/releases/download/v1.0.0/Unplugged.dmg" class="btn btn-primary btn-large animate-pulse-glow" download>
+            DOWNLOAD UNPLUGGED.DMG
+          </a>
+        </div>
+        
+        <p class="download-subtext">
+          Requires macOS Ventura (13.0) or later. Apple Silicon (M-series) and Intel supported.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-logo"><img src="logo.jpeg" alt="Unplugged" class="footer-logo-img"> UNPLUGGED</span>
+        <span class="footer-copy">MIT License © 2026. Built by Anzy and Contributors.</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/anzydev/Unplugged" target="_blank" class="footer-link">GitHub Source</a>
+        <a href="https://github.com/anzydev/Unplugged/releases" target="_blank" class="footer-link">All Releases</a>
+        <a href="https://github.com/anzydev/Unplugged/blob/main/LICENSE" target="_blank" class="footer-link">License Details</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
